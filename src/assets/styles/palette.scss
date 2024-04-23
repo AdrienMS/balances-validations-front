@@ -1,0 +1,34 @@
+@import '@angular/material/core/theming/_palette.scss';
+
+$primary-palette: (
+  50: #E4F3FC,
+  100: #BDE0F8,
+  200: #94CDF4,
+  300: #6CB9EF,
+  400: #4DAAED,
+  500: #329CEA,
+  600: #2A8EDD,
+  700: #217CCB,
+  800: #1A6CB9,
+  900: #034E9C,
+  A100: #BDE0F8,
+  A200: #94CDF4,
+  A400: #1A6CB9,
+  A700: #217CCB,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);

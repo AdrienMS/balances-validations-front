@@ -1,0 +1,45 @@
+<div class="movements row">
+    @for (movement of formCtrl.value; track $index) {
+        <form
+            [formGroup]="movement"
+            class="movements--content col-12 col-sm-6 col-md-4"
+            [ngClass]="{'error': onError(movement.value.id)}"
+        >
+
+            @if (onError(movement.value.id)) {
+                <div class="movements--errors">
+                    @for (error of onError(movement.value.id); track $index) {
+                        <div class="movements--error">{{error}}</div>
+                    }
+                </div>
+            }
+
+            <mat-form-field appearance="outline">
+                <mat-label>Id</mat-label>
+                <input [formControl]="movement.controls.id" type="number" matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="datepicker" [formControl]="movement.controls.date">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Wording</mat-label>
+                <input [formControl]="movement.controls.wording" matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Amount</mat-label>
+                <input [formControl]="movement.controls.amount" type="number" matInput>
+                <mat-icon matSuffix>euro</mat-icon>
+            </mat-form-field>
+
+            <button mat-button color="warn" class="movements--delete" (click)="onDelete($index)">Delete</button>
+
+        </form>
+    }
+</div>

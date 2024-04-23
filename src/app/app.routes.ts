@@ -1,3 +1,13 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { LayoutComponent } from '@core/components';
+
+export const routes: Routes = [
+    { 
+        path: '', 
+        component: LayoutComponent,
+        children: [
+            { path: '', loadChildren: () => import('./movement/movement.module').then((m) => m.MovementModule) },
+        ],
+    }
+];

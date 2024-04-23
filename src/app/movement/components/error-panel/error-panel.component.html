@@ -1,0 +1,19 @@
+<mat-card class="error-panel">
+    <mat-card-header>
+        <mat-card-title>Validation failed</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            @for (type of arrayTypes; track $index) {
+                @for (reason of getReasonType(type); track $index) {
+                    <mat-list-item>
+                        <span matListItemTitle>{{ type }}</span>
+                        <span>{{ reason.detail }}</span>
+                        <span>{{ getDuplicated(reason.duplicate) }}</span>
+                        <span>{{ getOutRange(reason.outRange) }}</span>
+                    </mat-list-item>
+                }
+            }
+        </mat-list>
+    </mat-card-content>
+</mat-card>

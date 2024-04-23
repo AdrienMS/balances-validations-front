@@ -1,0 +1,17 @@
+.card {
+    margin: 20px 0;
+}
+
+.card {
+    &--header {
+        padding: 10px;
+        border-bottom: 1px solid whitesmoke;
+    }
+    &--content {
+        padding: 0 12px;
+    }
+    &--actions {
+        border-top: 1px solid whitesmoke;
+        flex-direction: row-reverse;
+    }
+}

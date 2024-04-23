@@ -1,0 +1,23 @@
+<div class="checkpoints row">
+    @for (checkpoint of formCtrl.value; track $index) {
+        <form [formGroup]="checkpoint" class="checkpoints--content col-12 col-sm-6 col-md-4">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Balance</mat-label>
+                <input [formControl]="checkpoint.controls.balance" type="number" matInput>
+                <mat-icon matSuffix>euro</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="datepicker" [formControl]="checkpoint.controls.date">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker></mat-datepicker>
+            </mat-form-field>
+
+            <button mat-button color="warn" class="checkpoints--delete" (click)="onDelete($index)">Delete</button>
+
+        </form>
+    }
+</div>
