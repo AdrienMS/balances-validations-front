@@ -28,7 +28,7 @@ export class MovementsComponent extends GlobalFormComponent {
     if (id === undefined) return null;
     const error: string[] = [];
     this.reasons?.forEach(reason => {
-      if (reason.outRange?.id === id) error.push('Out of Range');
+      if (reason.outRange?.id === id && !error.includes('Out of Range')) error.push('Out of Range');
       reason.duplicate?.forEach(duplicate => {
         if (duplicate.id === id && !error.includes('Duplicated')) error.push('Duplicated');
       });
