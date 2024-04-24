@@ -47,7 +47,7 @@ export class ValidationPage {
     const movements: Partial<Movement>[] = this.movementsGroup.value.map(m => m.value);
 
     this._movementService.validation(balances, movements).subscribe({
-      next: (v) => {
+      next: () => {
         this.reasons = undefined;
         this.isSuccess = true;
         this._openSnackBar('Validation success');

@@ -28,3 +28,14 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: whitesmoke;
 }
+
+.field-error {
+  .mdc-text-field.mdc-text-field--outlined {
+    .mdc-notched-outline__leading, .mdc-notched-outline__notch, .mdc-notched-outline__trailing {
+      border-color: red;
+    }
+    .mdc-floating-label {
+      color: red;
+    }
+  }
+}

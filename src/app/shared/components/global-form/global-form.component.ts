@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 export class GlobalFormComponent {
   @Input({required: true}) onAdd!: Subject<void>;
   @Input({required: true}) formCtrl!: FormControl<unknown[]>;
+  @Input() reasons?: unknown[];
 
   constructor(protected _fb: FormBuilder) {}
 

@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 
 import { GlobalFormComponent } from '@shared/components';
 
+import { EReason } from '../../enums';
 import { IMovementForm } from '../../interfaces';
 import { Reason } from '../../models';
 
@@ -13,7 +14,7 @@ import { Reason } from '../../models';
 })
 export class MovementsComponent extends GlobalFormComponent {
   @Input({required: true}) override formCtrl!: FormControl<IMovementForm[]>;
-  @Input() reasons?: Reason[];
+  @Input() override reasons?: Reason[];
 
   protected override _addGroup(): void {
     this.formCtrl.value.push(this._fb.group({
@@ -34,5 +35,23 @@ export class MovementsComponent extends GlobalFormComponent {
       });
     });
     return error.length ? error : null;
+  }
+  
+
+  public fieldOnError(index: number, name: 'id' | 'date' | 'wording' | 'amount'): string | null {
+    let error: string | null = null;
+    this.reasons?.forEach(reason => {
+      if (reason.reason === EReason.PARAMETER) {
+        const reasonParam: Pick<Required<Reason>, 'reason' | 'detail'> = reason as Required<Reason>;
+        const value = reasonParam.detail.split(' ')[0].split('.');
+        const object = value[0];
+        const i = value[1];
+        const field = value[2];
+        if (object === 'movements' && parseInt(i) === index && field === name) {
+          error = reasonParam.detail.split(' ').slice(1).join(' ');
+        }
+      }
+    });
+    return error;
   }
 }

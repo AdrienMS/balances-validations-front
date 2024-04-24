@@ -1,3 +1,9 @@
 .error-panel {
     background-color: #ffcdd2;
 }
+
+.error-panel{
+    &--list {
+        height: fit-content!important;
+    }
+}

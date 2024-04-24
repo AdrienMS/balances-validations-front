@@ -2,18 +2,23 @@
     @for (checkpoint of formCtrl.value; track $index) {
         <form [formGroup]="checkpoint" class="checkpoints--content col-12 col-sm-6 col-md-4">
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" [ngClass]="{'field-error': fieldOnError($index, 'balance') ? true : false}">
                 <mat-label>Balance</mat-label>
                 <input [formControl]="checkpoint.controls.balance" type="number" matInput>
                 <mat-icon matSuffix>euro</mat-icon>
+                @if (reasons && fieldOnError($index, 'balance')) {
+                    <mat-hint>{{ fieldOnError($index, 'balance') }}</mat-hint>
+                }
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" [ngClass]="{'field-error': fieldOnError($index, 'date') ? true : false}">
                 <mat-label>Date</mat-label>
-                <input matInput [matDatepicker]="datepicker" [formControl]="checkpoint.controls.date">
-                <mat-hint>MM/DD/YYYY</mat-hint>
+                <input matInput [matDatepicker]="datepicker" [formControl]="checkpoint.controls.date" placeholder="MM/DD/YYYY">
                 <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
                 <mat-datepicker #datepicker></mat-datepicker>
+                @if (reasons && fieldOnError($index, 'date')) {
+                    <mat-hint>{{ fieldOnError($index, 'date') }}</mat-hint>
+                }
             </mat-form-field>
 
             <button mat-button color="warn" class="checkpoints--delete" (click)="onDelete($index)">Delete</button>

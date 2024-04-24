@@ -8,7 +8,7 @@
     <div class="validation--container">
         <card (action)="onAddCheckpoint()">
             <ng-container card-title>Checkpoints</ng-container>
-            <checkpoints [onAdd]="addCheckpoint" [formCtrl]="balancesGroup"></checkpoints>
+            <checkpoints [onAdd]="addCheckpoint" [formCtrl]="balancesGroup" [reasons]="reasons"></checkpoints>
             <ng-container card-action>Add Checkpoints</ng-container>
         </card>
         <card (action)="onAddMovement()">

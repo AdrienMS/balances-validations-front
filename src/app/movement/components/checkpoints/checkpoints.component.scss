@@ -1,0 +1,14 @@
+.checkpoints {
+    &--content {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid whitesmoke;
+        padding: 20px 10px 10px 10px;
+    }
+}
+
+.field-error {
+    mat-hint {
+        color: red;
+    }   
+}

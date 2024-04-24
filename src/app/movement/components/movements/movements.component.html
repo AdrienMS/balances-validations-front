@@ -14,28 +14,39 @@
                 </div>
             }
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" [ngClass]="{'field-error': fieldOnError($index, 'id') ? true : false}">
                 <mat-label>Id</mat-label>
                 <input [formControl]="movement.controls.id" type="number" matInput>
+                @if (reasons && fieldOnError($index, 'id')) {
+                    <mat-hint>{{ fieldOnError($index, 'id') }}</mat-hint>
+                }
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" [ngClass]="{'field-error': fieldOnError($index, 'date') ? true : false}">
                 <mat-label>Date</mat-label>
-                <input matInput [matDatepicker]="datepicker" [formControl]="movement.controls.date">
-                <mat-hint>MM/DD/YYYY</mat-hint>
+                <input matInput [matDatepicker]="datepicker" [formControl]="movement.controls.date" placeholder="MM/DD/YYYY">
                 <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
                 <mat-datepicker #datepicker></mat-datepicker>
+                @if (reasons && fieldOnError($index, 'date')) {
+                    <mat-hint>{{ fieldOnError($index, 'date') }}</mat-hint>
+                }
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" [ngClass]="{'field-error': fieldOnError($index, 'wording') ? true : false}">
                 <mat-label>Wording</mat-label>
                 <input [formControl]="movement.controls.wording" matInput>
+                @if (reasons && fieldOnError($index, 'wording')) {
+                    <mat-hint>{{ fieldOnError($index, 'wording') }}</mat-hint>
+                }
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" [ngClass]="{'field-error': fieldOnError($index, 'amount') ? true : false}">
                 <mat-label>Amount</mat-label>
                 <input [formControl]="movement.controls.amount" type="number" matInput>
                 <mat-icon matSuffix>euro</mat-icon>
+                @if (reasons && fieldOnError($index, 'amount')) {
+                    <mat-hint>{{ fieldOnError($index, 'amount') }}</mat-hint>
+                }
             </mat-form-field>
 
             <button mat-button color="warn" class="movements--delete" (click)="onDelete($index)">Delete</button>

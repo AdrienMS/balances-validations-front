@@ -27,3 +27,9 @@
         border-color: #ef5350;
     }
 }
+
+.field-error {
+    mat-hint {
+        color: red;
+    }   
+}
