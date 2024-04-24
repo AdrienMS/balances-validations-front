@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { SharedModule } from '@shared/shared.module';
 
@@ -49,6 +50,7 @@ import { ErrorPanelComponent } from './components/error-panel/error-panel.compon
     MatInputModule,
     MatListModule,
     MatNativeDateModule,
+    MatSnackBarModule,
 
     SharedModule,
 

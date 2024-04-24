@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { Subject } from 'rxjs';
 
 import { ICheckpointForm, IMovementForm } from '../../interfaces';
@@ -28,6 +30,7 @@ export class ValidationPage {
 
   constructor(
     private _fb: FormBuilder,
+    private _snackBar: MatSnackBar,
     private _movementService: MovementService,
   ) {}
 
@@ -47,11 +50,17 @@ export class ValidationPage {
       next: (v) => {
         this.reasons = undefined;
         this.isSuccess = true;
+        this._openSnackBar('Validation success');
       },
       error: (e: HttpErrorResponse) => {
         this.isSuccess = false;
         this.reasons = (<ApiResponse>e.error).reasons;
+        this._openSnackBar('Validation failed');
       },
     });
+  }
+
+  private _openSnackBar(message: string) {
+    this._snackBar.open(message, undefined, { duration: 4000 });
   }
 }

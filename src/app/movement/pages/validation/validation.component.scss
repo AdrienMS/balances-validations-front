@@ -1,0 +1,11 @@
+.validation {
+    &--success {
+        float: right;
+        font-size: 1rem;
+        background-color: green;
+        padding: 10px;
+        border-radius: 8px;
+        color: white;
+        font-weight: normal;
+    }
+}
